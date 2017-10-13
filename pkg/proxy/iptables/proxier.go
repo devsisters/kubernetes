@@ -103,6 +103,9 @@ func CanUseIPTablesProxier(iptver IPTablesVersioner, kcompat KernelCompatTester)
 	if err != nil {
 		return false, err
 	}
+	if iptver == nil {
+		return false, nil
+	}
 	versionString, err := iptver.GetVersion()
 	if err != nil {
 		return false, err
