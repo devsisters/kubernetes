@@ -84,11 +84,13 @@ func (dm *realDiskSpaceManager) getFsInfo(fsType string, f func() (cadvisorapi.F
 }
 
 func (dm *realDiskSpaceManager) IsRuntimeDiskSpaceAvailable() (bool, error) {
-	return dm.isSpaceAvailable("runtime", dm.policy.DockerFreeDiskMB, dm.cadvisor.ImagesFsInfo)
+	return true, nil
+	// return dm.isSpaceAvailable("runtime", dm.policy.DockerFreeDiskMB, dm.cadvisor.ImagesFsInfo)
 }
 
 func (dm *realDiskSpaceManager) IsRootDiskSpaceAvailable() (bool, error) {
-	return dm.isSpaceAvailable("root", dm.policy.RootFreeDiskMB, dm.cadvisor.RootFsInfo)
+	return true, nil
+	// return dm.isSpaceAvailable("root", dm.policy.RootFreeDiskMB, dm.cadvisor.RootFsInfo)
 }
 
 func (dm *realDiskSpaceManager) isSpaceAvailable(fsType string, threshold int, f func() (cadvisorapi.FsInfo, error)) (bool, error) {
